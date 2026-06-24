@@ -14,3 +14,7 @@ Projeto para demonstrar uma pipeline completa de Data Engineering para análise 
 -Metabase
 -Ollama
 -SQL
+
+## Dataset
+
+O arquivo german_credit_data.csv não foi adicionado ao repositório por questões de boas práticas.
