@@ -1,8 +1,8 @@
 import pandas as pd
 
-from config import RAW_DATA_PATH, TRUSTED_DATA_PATH
-from quality import DataQualityReporter
-from validator import DataValidator
+from credit_pipeline.config import RAW_DATA_PATH, TRUSTED_DATA_PATH
+from credit_pipeline.ingestion.quality import DataQualityReporter
+from credit_pipeline.ingestion.validator import DataValidator
 
 
 def load_dataset() -> pd.DataFrame:
