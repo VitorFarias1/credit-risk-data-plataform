@@ -20,3 +20,7 @@ RAW_PARQUET_PATH = TRUSTED_DIR / "german_credit.parquet"
 TRUSTED_DATA_PATH = TRUSTED_DIR / "german_credit_trusted.parquet"
 
 WAREHOUSE_DB_PATH = WAREHOUSE_DIR / "credit.duckdb"
+
+WAREHOUSE_DIR = DATA_DIR / "warehouse"
+
+WAREHOUSE_DB_PATH = WAREHOUSE_DIR / "credit.duckdb"
