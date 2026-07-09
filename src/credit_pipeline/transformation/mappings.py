@@ -25,5 +25,5 @@ COLUMN_MAPPING = {
 
 CREDIT_RISK_MAPPING = {
     1: "good",
-    2: "bad",
+    0: "bad",
 }

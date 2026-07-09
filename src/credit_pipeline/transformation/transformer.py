@@ -12,6 +12,7 @@ class TrustedLayerTransformer:
         self._transform_credit_risk()
         self._convert_data_types()
         self._create_age_group()
+        return self.df
 
     def _rename_columns(self):
         self.df.rename(
