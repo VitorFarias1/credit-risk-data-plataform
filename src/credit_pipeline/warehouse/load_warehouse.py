@@ -17,3 +17,7 @@ def main():
     connection.close()
 
     print("Warehouse Loaded.")
+
+
+if __name__ == "__main__":
+    main()
