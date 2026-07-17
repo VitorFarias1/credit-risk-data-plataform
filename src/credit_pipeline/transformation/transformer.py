@@ -29,10 +29,8 @@ class TrustedLayerTransformer:
     def _convert_data_types(self):
         categorical_columns = [
             "checking_account_status",
-            "loan_duration_months",
             "credit_history",
             "loan_purpose",
-            "credit_amount",
             "savings_account",
             "employment_duration",
             "installment_rate",
@@ -40,7 +38,6 @@ class TrustedLayerTransformer:
             "guarantors",
             "residence_duration",
             "property",
-            "age",
             "other_installment_plans",
             "housing",
             "existing_credits",

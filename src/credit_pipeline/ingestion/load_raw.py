@@ -1,6 +1,6 @@
 import pandas as pd
 
-from credit_pipeline.config import RAW_DATA_PATH, TRUSTED_DATA_PATH
+from credit_pipeline.config import RAW_DATA_PATH, RAW_PARQUET_PATH
 from credit_pipeline.ingestion.quality import DataQualityReporter
 from credit_pipeline.ingestion.validator import DataValidator
 
@@ -11,7 +11,7 @@ def load_dataset() -> pd.DataFrame:
 
 def save_as_parquet(df: pd.DataFrame) -> None:
     df.to_parquet(
-        TRUSTED_DATA_PATH,
+        RAW_PARQUET_PATH,
         index=False,
     )
 

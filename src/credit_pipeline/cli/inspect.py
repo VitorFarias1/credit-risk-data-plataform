@@ -10,14 +10,14 @@ def main():
     print("\n=== SAMPLE ===")
     print(conn.sql("""
         SELECT *
-        FROM trusted_credit
+        FROM trusted.credit
         LIMIT 5
     """).fetchdf())
 
     print("\n=== ROW COUNT ===")
     print(conn.sql("""
         SELECT COUNT(*) AS total
-        FROM trusted_credit
+        FROM trusted.credit
     """).fetchdf())
 
     conn.close()

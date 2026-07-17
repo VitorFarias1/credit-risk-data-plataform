@@ -11,7 +11,7 @@ class DataQualityReporter:
             "missing_values": int(self.df.isnull().sum().sum()),
             "duplicated_rows": int(self.df.duplicated().sum()),
             "memory_usage_mb": round(
-                self.df.memory_usage(deep=True).sum() / 1024 * 2, 2
+                self.df.memory_usage(deep=True).sum() / (1024 ** 2), 2
             ),
         }
 
