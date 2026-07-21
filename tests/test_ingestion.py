@@ -30,8 +30,7 @@ class TestDataValidator:
     def test_passes_for_a_valid_dataframe(self, raw_csv_file, raw_df):
         validator = DataValidator(raw_df, raw_csv_file)
 
-        validator.validate()  
-
+        validator.validate() 
 
 class TestDataQualityReporter:
     def test_report_counts_match_the_dataframe(self, raw_df):
@@ -72,5 +71,5 @@ class TestDataQualityReporter:
         expected_mb = raw_df.memory_usage(deep=True).sum() / (1024 ** 2)
 
         assert report["memory_usage_mb"] == pytest.approx(expected_mb, abs=0.01)
-       
+    
         assert report["memory_usage_mb"] < 1

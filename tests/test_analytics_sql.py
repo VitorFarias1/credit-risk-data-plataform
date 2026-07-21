@@ -1,3 +1,4 @@
+import duckdb
 import pytest
 import yaml
 
@@ -20,7 +21,6 @@ def _duckdb_type_satisfies_contract(actual_type: str, contract_type: str) -> boo
     against).
     """
     if contract_type in ("category", "string"):
-        
         return actual_type == "VARCHAR" or actual_type.startswith("ENUM(") or actual_type == "BIGINT"
     if contract_type == "integer":
         return actual_type in {"BIGINT", "INTEGER", "HUGEINT"}
@@ -160,3 +160,27 @@ class TestAnalyticsValidator:
 
         with pytest.raises(ValueError):
             AnalyticsValidator().validate()
+
+    def test_connection_is_closed_even_when_validation_fails(
+        self, analytics_built, monkeypatch
+    ):
+        """Regression test: validate() used to close the connection only
+        on its last line, so a failed check (raised ValueError) left the
+        DuckDB connection open -- a leak in any process that keeps
+        running after validation fails, such as an Airflow worker.
+        """
+        analytics_built.execute("""
+            UPDATE analytics.loan_purpose_summary
+            SET customers = customers + 1
+        """)
+
+        monkeypatch.setattr(
+            "credit_pipeline.analytics.validator.get_connection",
+            lambda: analytics_built,
+        )
+
+        with pytest.raises(ValueError):
+            AnalyticsValidator().validate()
+
+        with pytest.raises(duckdb.ConnectionException):
+            analytics_built.execute("SELECT 1")

@@ -33,7 +33,7 @@ class TestTrustedLayerTransformer:
 
         expected_names = set(COLUMN_MAPPING.values()) | {"age_group"}
         assert expected_names.issubset(set(trusted.columns))
-        
+       
         assert not set(COLUMN_MAPPING.keys()) & set(trusted.columns)
 
     def test_credit_risk_is_mapped_to_good_bad_labels(self, raw_df):

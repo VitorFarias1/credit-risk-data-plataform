@@ -14,13 +14,13 @@ hardcoded from __file__).
 """
 
 import credit_pipeline.analytics.load_analytics as load_analytics_module
+import credit_pipeline.analytics.validator as validator_module
 import credit_pipeline.ingestion.load_raw as load_raw_module
 import credit_pipeline.transformation.load_trusted as load_trusted_module
 import credit_pipeline.warehouse.database as database_module
 import credit_pipeline.warehouse.load_warehouse as load_warehouse_module
 import credit_pipeline.warehouse.loader as loader_module
 import pytest
-from credit_pipeline.analytics.validator import AnalyticsValidator
 
 
 @pytest.fixture
@@ -74,4 +74,4 @@ def test_full_pipeline_runs_end_to_end(isolated_pipeline_paths):
 
     load_analytics_module.main()
 
-    AnalyticsValidator().validate()
+    validator_module.main()
